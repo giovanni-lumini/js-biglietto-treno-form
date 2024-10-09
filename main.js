@@ -25,21 +25,76 @@ Le milestone vanno seguite in ordine. Non passate alla richiesta della m2 se non
 const button = document.querySelector(".confirm")
 console.log(button);
 
-button.addEventListener ("click", () => {
+button.addEventListener("click", () => {
     //imput nome e cognome
     const field_name = document.querySelector(".nome_cognome");
-    const add_name = field_name.value; 
+    const add_name = field_name.value;
     console.log(add_name);
     //imput km
     const field_km = document.querySelector(".km_to_do");
     const add_km = field_km.value;
     console.log(add_km);
+
     //select age
     const field_age = document.querySelector(".age")
     const add_age = field_age.value;
     console.log(add_age);
+
+    //inserisce il nome nel biglietto
+    const enter_name = document.getElementById("enter_name");
+    enter_name.innerHTML = add_name;
+
+    //minorenne
+    const field_minorenne = document.getElementById("minorenne");
+    const choice_minorenne = field_minorenne.value;
+    /* console.log(choice_minorenne); */
+    //maggiorenne
+    const field_maggiorenne = document.getElementById("maggiorenne");
+    const choice_maggiorenne = field_maggiorenne.value;
+    /* console.log(choice_maggiorenne); */
+    //over65
+    const field_over65 = document.getElementById("over65");
+    const choice_over65 = field_over65.value;
+    /* console.log(choice_over65); */
+
+
+    //prima fase: preparazione
+    let km
+    let age
+    let price_ticket_general
+    let price_ticket_under_18
+    let price_ticket_over_65
+    let cost_trip_general
+    let cost_trip_under_18
+    let cost_trip_over_65
+    let discount_20
+    let discount_40
+    price_ticket_general = 0.21;
+
+    //terza fase: elaboriamo i dati+uotput
+    if (add_age == choice_minorenne) {
+        discount_20 = ((price_ticket_general * 20) / 100);
+        console.log(discount_20);
+        price_ticket_under_18 = price_ticket_general - discount_20;
+        console.log(price_ticket_under_18);
+        cost_trip_under_18 = add_km * price_ticket_under_18;
+        console.log(`il prezzo per gli under 18 è ${cost_trip_under_18.toFixed(2)}€`);
+    } else if (add_age == choice_over65) {
+        discount_40 = ((price_ticket_general * 40) / 100);
+        console.log(discount_40);
+        price_ticket_over_65 = price_ticket_general - discount_40;
+        console.log(price_ticket_over_65);
+        cost_trip_over_65 = add_km * price_ticket_over_65;
+        console.log(`il prezzo per gli over 65 è ${cost_trip_over_65.toFixed(2)}€`);
+    } else {
+        cost_trip_general = add_km * price_ticket_general;
+        console.log(`il prezzo è ${cost_trip_general.toFixed(2)}€`);
+    }
+
+
+
+
 })
-//quanto fatto sopra logga solo in console
 
 
 
@@ -48,48 +103,7 @@ button.addEventListener ("click", () => {
 
 
 
-/* 
 
-//prima fase: preparazione
-let km
-let age
-let price_ticket_general
-let price_ticket_under_18
-let price_ticket_over_65
-let cost_trip_general
-let cost_trip_under_18
-let cost_trip_over_65
-let discount_20
-let discount_40
 
-//seconda fase: raccogliamo i dati 
-km=prompt("Ciao, inserisci i km che vuoi percorrere");
-console.log(km);
 
-age=prompt("Ciao, inserisci la tua eta")
-console.log(age);
-
-price_ticket_general=0.21;
-
-//terza fase: elaboriamo i dati+uotput
-if(age<18){
-    discount_20=((price_ticket_general*20)/100);
-    console.log(discount_20);
-    price_ticket_under_18=price_ticket_general-discount_20;
-    console.log(price_ticket_under_18);
-    cost_trip_under_18=km*price_ticket_under_18;
-    console.log(`il prezzo per gli under 18 è ${cost_trip_under_18.toFixed(2)}€`);
-} else if(age>65){
-    discount_40=((price_ticket_general*40)/100);
-    console.log(discount_40);
-    price_ticket_over_65=price_ticket_general-discount_40;
-    console.log(price_ticket_over_65);
-    cost_trip_over_65=km*price_ticket_over_65;
-    console.log(`il prezzo per gli over 65 è ${cost_trip_over_65.toFixed(2)}€`);
-} else{
-    cost_trip_general=km*price_ticket_general;
-    console.log(`il prezzo è ${cost_trip_general.toFixed(2)}€`);
-}
-
-*/
 
