@@ -30,6 +30,10 @@ button.addEventListener("click", () => {
     const field_name = document.querySelector(".nome_cognome");
     const add_name = field_name.value;
     console.log(add_name);
+    //inserisce il nome nel biglietto
+    const enter_name = document.getElementById("enter_name");
+    enter_name.innerHTML = add_name;
+
     //imput km
     const field_km = document.querySelector(".km_to_do");
     const add_km = field_km.value;
@@ -39,10 +43,6 @@ button.addEventListener("click", () => {
     const field_age = document.querySelector(".age")
     const add_age = field_age.value;
     console.log(add_age);
-
-    //inserisce il nome nel biglietto
-    const enter_name = document.getElementById("enter_name");
-    enter_name.innerHTML = add_name;
 
     //minorenne
     const field_minorenne = document.getElementById("minorenne");
@@ -57,8 +57,7 @@ button.addEventListener("click", () => {
     const choice_over65 = field_over65.value;
     /* console.log(choice_over65); */
 
-
-    //prima fase: preparazione
+    //preparazione
     let km
     let age
     let price_ticket_general
@@ -71,7 +70,7 @@ button.addEventListener("click", () => {
     let discount_40
     price_ticket_general = 0.21;
 
-    //terza fase: elaboriamo i dati+uotput
+    //elaboriamo i dati+uotput
     if (add_age == choice_minorenne) {
         discount_20 = ((price_ticket_general * 20) / 100);
         console.log(discount_20);
@@ -79,6 +78,16 @@ button.addEventListener("click", () => {
         console.log(price_ticket_under_18);
         cost_trip_under_18 = add_km * price_ticket_under_18;
         console.log(`il prezzo per gli under 18 è ${cost_trip_under_18.toFixed(2)}€`);
+
+        const enter_offer = document.getElementById("enter_offer");
+        enter_offer.innerHTML = ("Biglietto Sconto Minori");
+        const enter_carrozza = document.getElementById("enter_carrozza");
+        enter_carrozza.innerHTML = ("Carrozza Minori");
+        const enter_codiceCP = document.getElementById("enter_codiceCP");
+        enter_codiceCP.innerHTML = ("Cod<18");
+        const enter_costo = document.getElementById("enter_costo");
+        enter_costo.innerHTML = cost_trip_under_18.toFixed(2);
+
     } else if (add_age == choice_over65) {
         discount_40 = ((price_ticket_general * 40) / 100);
         console.log(discount_40);
@@ -86,14 +95,29 @@ button.addEventListener("click", () => {
         console.log(price_ticket_over_65);
         cost_trip_over_65 = add_km * price_ticket_over_65;
         console.log(`il prezzo per gli over 65 è ${cost_trip_over_65.toFixed(2)}€`);
+
+        const enter_offer = document.getElementById("enter_offer");
+        enter_offer.innerHTML = ("Biglietto Sconto Over65");
+        const enter_carrozza = document.getElementById("enter_carrozza");
+        enter_carrozza.innerHTML = ("Carrozza Over65");
+        const enter_codiceCP = document.getElementById("enter_codiceCP");
+        enter_codiceCP.innerHTML = ("Cod>65");
+        const enter_costo = document.getElementById("enter_costo");
+        enter_costo.innerHTML = cost_trip_over_65.toFixed(2);
+
     } else {
         cost_trip_general = add_km * price_ticket_general;
         console.log(`il prezzo è ${cost_trip_general.toFixed(2)}€`);
+
+        const enter_offer = document.getElementById("enter_offer");
+        enter_offer.innerHTML = ("Biglietto Standard");
+        const enter_carrozza = document.getElementById("enter_carrozza");
+        enter_carrozza.innerHTML = ("Carrozza Standard");
+        const enter_codiceCP = document.getElementById("enter_codiceCP");
+        enter_codiceCP.innerHTML = ("Cod-Standard");
+        const enter_costo = document.getElementById("enter_costo");
+        enter_costo.innerHTML = cost_trip_general.toFixed(2);
     }
-
-
-
-
 })
 
 
