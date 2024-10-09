@@ -21,6 +21,28 @@ Le milestone vanno seguite in ordine. Non passate alla richiesta della m2 se non
 */
 
 
+//select button
+const button = document.querySelector(".confirm")
+console.log(button);
+
+button.addEventListener ("click", () => {
+    //imput nome e cognome
+    const field_name = document.querySelector(".nome_cognome");
+    const add_name = field_name.value; 
+    console.log(add_name);
+    //imput km
+    const field_km = document.querySelector(".km_to_do");
+    const add_km = field_km.value;
+    console.log(add_km);
+    //select age
+    const field_age = document.querySelector(".age")
+    const add_age = field_age.value;
+    console.log(add_age);
+})
+//quanto fatto sopra logga solo in console
+
+
+
 
 
 
